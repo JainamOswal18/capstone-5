@@ -1,0 +1,1 @@
+Welcome To Book Notes - my capstone project aiming to help me revise how to integrate public apis, server side rendering using express/node and to demonstrate crud operations on postgres for persistent storage
