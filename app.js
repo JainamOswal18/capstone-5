@@ -110,8 +110,8 @@ app.post("/modify", (req, res) => {
         );
     } 
 
-    if (req.body.delete) {
-        pool.query("DELETE FROM books_data WHERE title=$1", [title]);
+    if (req.body.action == 'Delete') {
+        pool.query("DELETE FROM books_data WHERE coverId=$1", [req.body.coverId]);
         return res.redirect("/");
     }
 
