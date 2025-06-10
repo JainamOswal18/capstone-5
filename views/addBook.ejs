@@ -1,0 +1,45 @@
+<%- include('partials/header.ejs') %>
+
+    <div class="books">
+        <div class="coverSection">
+            <img class="coverImage" src="https://covers.openlibrary.org/b/id/<%= locals.bookInfo.coverId %>-L.jpg" alt="book cover image">
+        </div>       
+        
+
+        <div class="bookInfo">
+            <h2 class="title"><%= locals.bookInfo.title%></h2>
+            <h4 class="authorName">By <%= locals.bookInfo.author %></h4>
+        
+            <form action="/addBook" method="post">
+                <input type="hidden" name="coverId" value="<%= bookInfo.coverId %>">
+                <input type="hidden" name="title" value="<%= bookInfo.title %>">
+                <input type="hidden" name="author" value="<%= bookInfo.author %>">
+            
+                <h3>Write review:</h3>
+                <textarea name="review_text" id="review_text" cols="30" rows="20" required><%= bookInfo.review || '' %></textarea>
+            
+                <h3>Rating:</h3>
+                <div class="slidecontainer">
+                    <input name="rating" type="range" min="0" max="5" class="slider" id="myRange" value="<%= bookInfo.rating || 0 %>">
+                    <span id="sliderValue"><%= bookInfo.rating || 0 %></span>
+                </div>
+            
+                <input type="submit" value="Add a review">
+            </form>
+        
+        </div>
+    </div>
+
+</main>    
+
+<script>
+    const slider = document.getElementById("myRange");
+    const output = document.getElementById("sliderValue");
+    if (slider && output) {
+      slider.oninput = function () {
+        output.innerText = this.value;
+      };
+    }
+  </script>
+</body>
+</html>
